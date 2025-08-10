@@ -1,6 +1,3 @@
-// script.js
-
-// Esperar a que el documento esté listo
 document.addEventListener("DOMContentLoaded", () => {
   const botones = document.querySelectorAll(".add-to-cart");
 
@@ -31,3 +28,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
