@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrito – Ultimate Gaming Store</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .cart-table th, .cart-table td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    .empty-cart {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="logo.PNG" alt="Ultimate Gaming Store Logo">
+      <h1>Ultimate Gaming Store</h1>
+    </div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="consolas.html">Consolas</a>
+      <a href="juegos.html">Juegos</a>
+      <a href="variados.html">Varios</a>
+      <a href="carrito.html">Carrito</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Tu carrito de compras</h2>
+    <div id="cart-container"></div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const contenedor = document.getElementById("cart-container");
+      const carrito = JSON.parse(localStorage.getItem("cart")) || [];
+
+      if (carrito.length === 0) {
+        contenedor.innerHTML = '<p class="empty-cart">Tu carrito está vacío.</p>';
+        return;
+      }
+
+      let tabla = `
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      let total = 0;
+
+      carrito.forEach((producto, index) => {
+        const subtotal = producto.price * producto.quantity;
+        total += subtotal;
+        tabla += `
+          <tr>
+            <td>${producto.name}</td>
+            <td>$${producto.price}</td>
+            <td>${producto.quantity}</td>
+            <td>$${subtotal}</td>
+            <td><button onclick="eliminarProducto(${index})">Eliminar</button></td>
+          </tr>
+        `;
+      });
+
+      tabla += `
+          <tr>
+            <td colspan="3"><strong>Total</strong></td>
+            <td colspan="2"><strong>$${total}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      `;
+
+      contenedor.innerHTML = tabla;
+    });
+
+    function eliminarProducto(index) {
+      let carrito = JSON.parse(localStorage.getItem("cart")) || [];
+      carrito.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(carrito));
+      location.reload(); // Recargar la página para actualizar el carrito
+    }
+  </script>
+</body>
+</html>
