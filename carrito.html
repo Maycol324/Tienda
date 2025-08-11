@@ -23,7 +23,6 @@
       font-size: 1.2rem;
       color: gray;
     }
-    
     .delete-btn {
       background: none;
       border: none;
@@ -36,6 +35,25 @@
     }
     .delete-btn:hover {
       color: #cc0000; 
+    }
+
+    .checkout-container {
+      text-align: right;
+      margin-top: 25px;
+    }
+    .checkout-btn {
+      background-color: #c62828;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .checkout-btn:hover {
+      background-color: #8e0000;
     }
   </style>
 </head>
@@ -91,7 +109,7 @@
         tabla += `
           <tr>
             <td>${producto.name}</td>
-            <td>$${producto.price}</td>
+            <td>$${producto.price.toFixed(2)}</td>
             <td>${producto.quantity}</td>
             <td>$${subtotal.toFixed(2)}</td>
             <td><button class="delete-btn" onclick="eliminarProducto(${index})">&times;</button></td>
@@ -108,6 +126,12 @@
       </table>
       `;
 
+      tabla += `
+        <div class="checkout-container">
+          <button class="checkout-btn" onclick="simularCompra()">Comprar</button>
+        </div>
+      `;
+
       contenedor.innerHTML = tabla;
     });
 
@@ -116,6 +140,10 @@
       carrito.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(carrito));
       location.reload();
+    }
+
+    function simularCompra() {
+      alert("¡Compra realizada con éxito!");
     }
   </script>
 </body>
