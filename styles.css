@@ -1,171 +1,172 @@
 :root {
-  --bg: #111111;
-  --surface: #1f1f1f;
-  --primary: #c62828;
-  --accent: #8e0000;
-  --text: #eeeeee;
-  --muted: #bbbbbb;
-  --radius: 8px;
-  --transition: 0.3s ease;
-  --gap: 1.5rem;
+  --bg: #111111;
+  --surface: #1f1f1f;
+  --primary: #c62828;
+  --accent: #8e0000;
+  --text: #eeeeee;
+  --muted: #bbbbbb;
+  --radius: 8px;
+  --transition: 0.3s ease;
+  --gap: 1.5rem;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  line-height: 1.5;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  line-height: 1.5;
 }
 
 header {
-  position: sticky;
-  top: 0;
-  background-color: var(--surface);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  z-index: 100;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  position: sticky;
+  top: 0;
+  background-color: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 .logo-container {
-  display: flex;
-  align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo-container img {
-  width: 50px;
-  height: 50px;
-  margin-right: 0.75rem;
+  width: 50px;
+  height: 50px;
+  margin-right: 0.75rem;
 }
 
 .logo-container h1 {
-  color: var(--text);
-  font-size: 1.4rem;
-  letter-spacing: 1px;
+  color: var(--text);
+  font-size: 1.4rem;
+  letter-spacing: 1px;
 }
 
 nav a {
-  color: var(--text);
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin-left: 1.5rem;
-  padding: 0.3rem 0.7rem;
-  font-size: 0.9rem;
-  border-radius: var(--radius);
-  transition: background-color var(--transition), color var(--transition);
+  color: var(--text);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left: 1.5rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.9rem;
+  border-radius: var(--radius);
+  transition: background-color var(--transition), color var(--transition);
 }
 
 nav a:hover {
-  background-color: var(--primary);
-  color: var(--surface);
+  background-color: var(--primary);
+  color: var(--surface);
 }
 
 .container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
 h2 {
-  position: relative;
-  color: var(--primary);
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
+  position: relative;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
 }
 
 h2::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 60px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--gap);
-  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--gap);
+  margin-bottom: 2rem;
 }
 
 .product-card {
-  position: relative;
-  background-color: var(--surface);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: transform var(--transition), box-shadow var(--transition);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  position: relative;
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
 }
 
 .product-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5px;
-  height: 100%;
-  background: var(--primary);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--primary);
 }
 
 .product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.8);
+  transform: translateY(-6px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.8);
 }
 
 .product-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  display: block;
-  border-bottom: 2px solid var(--accent);
-  border-radius: var(--radius) var(--radius) 0 0;  
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 2px solid var(--accent);
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 
 img {
-  width: 100%;
-  max-width: 100%;  
-  height: auto;
-  object-fit: cover;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .product-card h3 {
-  margin: 0.75rem 1rem 0.5rem;
-  font-size: 1.1rem;
+  margin: 0.75rem 1rem 0.5rem;
+  font-size: 1.1rem;
 }
 
 .product-card .price {
-  margin: 0 1rem 1rem;
-  font-weight: bold;
-  color: var(--text);
+  margin: 0 1rem 1rem;
+  font-weight: bold;
+  color: var(--text);
 }
 
 .discount {
-  background: var(--accent);
-  color: var(--text);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  margin-left: 0.5rem;
+  background: var(--accent);
+  color: var(--text);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
 }
 
 @media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-  nav {
-    margin-top: 0.75rem;
-  }
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    margin-top: 0.75rem;
+  }
 }
