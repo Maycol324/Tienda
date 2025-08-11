@@ -41,8 +41,8 @@ header {
 }
 
 .logo-container img {
-  width: 150px;
-  height: 150px;
+  width: 110px;
+  height: 110px;
   margin-right: 0.75rem;
 }
 
@@ -169,4 +169,5 @@ img {
   }
 
 }
+
 
