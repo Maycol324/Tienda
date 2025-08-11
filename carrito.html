@@ -15,12 +15,27 @@
       padding: 10px;
       border: 1px solid #ccc;
       text-align: center;
+      vertical-align: middle; 
     }
     .empty-cart {
       text-align: center;
       margin-top: 30px;
       font-size: 1.2rem;
       color: gray;
+    }
+    
+    .delete-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #ff4d4d; 
+      font-weight: bold;
+      padding: 0 5px; 
+      line-height: 1;
+    }
+    .delete-btn:hover {
+      color: #cc0000; 
     }
   </style>
 </head>
@@ -62,7 +77,7 @@
               <th>Precio</th>
               <th>Cantidad</th>
               <th>Subtotal</th>
-              <th>Acción</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -78,16 +93,16 @@
             <td>${producto.name}</td>
             <td>$${producto.price}</td>
             <td>${producto.quantity}</td>
-            <td>$${subtotal}</td>
-            <td><button onclick="eliminarProducto(${index})">Eliminar</button></td>
+            <td>$${subtotal.toFixed(2)}</td>
+            <td><button class="delete-btn" onclick="eliminarProducto(${index})">&times;</button></td>
           </tr>
         `;
       });
-
       tabla += `
           <tr>
             <td colspan="3"><strong>Total</strong></td>
-            <td colspan="2"><strong>$${total}</strong></td>
+            <td><strong>$${total.toFixed(2)}</strong></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -100,10 +115,8 @@
       let carrito = JSON.parse(localStorage.getItem("cart")) || [];
       carrito.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(carrito));
-      location.reload(); // Recargar la página para actualizar el carrito
+      location.reload();
     }
   </script>
 </body>
 </html>
-
-
