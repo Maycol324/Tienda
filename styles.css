@@ -170,3 +170,25 @@ img {
     margin-top: 0.75rem;
   }
 }
+
+.portfolio-button {
+  display: inline-block;
+  margin: 0 1rem 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: var(--surface);
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color var(--transition), transform var(--transition);
+  text-align: center;
+}
+
+.portfolio-button:hover {
+  background-color: var(--accent);
+  transform: scale(1.05);
+  color: var(--text);
+}
+
+
