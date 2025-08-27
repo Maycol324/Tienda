@@ -36,7 +36,6 @@
     .delete-btn:hover {
       color: #cc0000; 
     }
-
     .checkout-container {
       text-align: right;
       margin-top: 25px;
@@ -78,13 +77,12 @@
     <div id="cart-container"></div>
 
     <section id="creadores">
-  <h2>¿Quiénes somos?</h2>
-  <p>Conoce al equipo detrás de Ultimate Gaming Store.</p>
-  <a href="creadores.html" target="_blank">
-    <button class="info-button">Ver creadores</button>
-  </a>
-</section>
-
+      <h2>¿Quiénes somos?</h2>
+      <p>Conoce al equipo detrás de Ultimate Gaming Store.</p>
+      <a href="creadores.html" target="_blank">
+        <button class="info-button">Ver creadores</button>
+      </a>
+    </section>
   </main>
 
   <script>
@@ -126,6 +124,7 @@
           </tr>
         `;
       });
+
       tabla += `
           <tr>
             <td colspan="3"><strong>Total</strong></td>
@@ -154,9 +153,9 @@
 
     function simularCompra() {
       alert("¡Compra realizada con éxito!");
+      localStorage.removeItem("cart");
+      location.reload();
     }
   </script>
 </body>
 </html>
-
-
