@@ -54,6 +54,11 @@
     .checkout-btn:hover {
       background-color: #8e0000;
     }
+    .qty-input {
+      width: 60px;
+      padding: 5px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -67,7 +72,6 @@
       <a href="consolas.html">Consolas</a>
       <a href="juegos.html">Juegos</a>
       <a href="variados.html">Accesorios</a>
-      <a href="creadores.html">Creadores</a>
       <a href="carrito.html">Carrito</a>
     </nav>
   </header>
@@ -75,18 +79,12 @@
   <main class="container">
     <h2>Tu carrito de compras</h2>
     <div id="cart-container"></div>
-
-    <section id="creadores">
-      <h2>¿Quiénes somos?</h2>
-      <p>Conoce al equipo detrás de Ultimate Gaming Store.</p>
-      <a href="creadores.html" target="_blank">
-        <button class="info-button">Ver creadores</button>
-      </a>
-    </section>
   </main>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", renderCarrito);
+
+    function renderCarrito() {
       const contenedor = document.getElementById("cart-container");
       const carrito = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -118,13 +116,15 @@
           <tr>
             <td>${producto.name}</td>
             <td>$${producto.price.toFixed(2)}</td>
-            <td>${producto.quantity}</td>
+            <td>
+              <input type="number" class="qty-input" value="${producto.quantity}" min="1"
+                     onchange="cambiarCantidad(${index}, this.value)">
+            </td>
             <td>$${subtotal.toFixed(2)}</td>
             <td><button class="delete-btn" onclick="eliminarProducto(${index})">&times;</button></td>
           </tr>
         `;
       });
-
       tabla += `
           <tr>
             <td colspan="3"><strong>Total</strong></td>
@@ -142,19 +142,29 @@
       `;
 
       contenedor.innerHTML = tabla;
-    });
+    }
 
     function eliminarProducto(index) {
       let carrito = JSON.parse(localStorage.getItem("cart")) || [];
       carrito.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(carrito));
-      location.reload();
+      renderCarrito();
+    }
+
+    function cambiarCantidad(index, nuevaCantidad) {
+      let carrito = JSON.parse(localStorage.getItem("cart")) || [];
+      nuevaCantidad = parseInt(nuevaCantidad);
+      if (nuevaCantidad > 0) {
+        carrito[index].quantity = nuevaCantidad;
+        localStorage.setItem("cart", JSON.stringify(carrito));
+        renderCarrito();
+      }
     }
 
     function simularCompra() {
       alert("¡Compra realizada con éxito!");
       localStorage.removeItem("cart");
-      location.reload();
+      renderCarrito();
     }
   </script>
 </body>
